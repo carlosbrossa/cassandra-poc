@@ -26,7 +26,7 @@ public class CassandraConfig {
         CqlSessionFactoryBean session = new CqlSessionFactoryBean();
         session.setContactPoints("127.0.0.1");
         session.setLocalDatacenter("datacenter1");
-        session.setKeyspaceName("airfare");
+        session.setKeyspaceName("schedule");
 
         return session;
     }

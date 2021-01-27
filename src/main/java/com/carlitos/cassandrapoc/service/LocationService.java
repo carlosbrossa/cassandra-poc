@@ -45,14 +45,14 @@ public class LocationService{
     public LocationAvailable getBySpeciality(String speciality) {
 
         LocationAvailable locationAvailable = cassandraTemplate.select(
-                "select * from airfare.location_by_specialty_brand where brand = 'DELBONI' and specialty = '" + speciality + "' ",
+                "select * from schedule.location_by_specialty_brand where brand = 'DELBONI' and specialty = '" + speciality + "' ",
                 LocationAvailable.class).get(0);
 
         return locationAvailable;
     }
 
     public void updateLocation(String speciality, String unit, Boolean avaibility) {
-        cqlTemplate.execute("UPDATE airfare.location_by_specialty_brand SET locations[?] = ? where brand = 'DELBONI' and specialty = ?",
+        cqlTemplate.execute("UPDATE schedule.location_by_specialty_brand SET locations[?] = ? where brand = 'DELBONI' and specialty = ?",
                 unit, avaibility, speciality);
     }
 }
