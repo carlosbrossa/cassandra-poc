@@ -26,4 +26,8 @@ public class ScheduleAvailableBySpecialityLocationDay {
     public Map<Integer, String> getSlots() {
         return slots;
     }
+
+    public ScheduleAvailableBySpecialityLocationDayPK getPk() {
+        return pk;
+    }
 }

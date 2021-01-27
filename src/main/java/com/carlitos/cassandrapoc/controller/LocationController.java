@@ -31,7 +31,6 @@ public class LocationController {
                        @PathVariable String unit,
                        @PathVariable Boolean avaibility){
         locationService.updateLocation(speciality, unit, avaibility);
-
     }
 
 }

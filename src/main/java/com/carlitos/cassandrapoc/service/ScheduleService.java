@@ -45,4 +45,18 @@ public class ScheduleService {
         }
 
     }
+
+    public ScheduleAvailableBySpecialityLocationDay findBySpecLocationDay(String speciality, String location, LocalDate day) {
+        return cassandraTemplate.select(
+                "select * from schedule.schedule_by_specialty_location_day " +
+                        "where brand = 'DELBONI' and specialty = '"+speciality+"' " +
+                        " and location = '"+location+"' and day = '"+day+"'",
+                ScheduleAvailableBySpecialityLocationDay.class).get(0);
+    }
+
+    public void remove(String specialty, String location, LocalDate day, int slot) {
+        cqlTemplate.execute("DELETE slots[?] from schedule.schedule_by_specialty_location_day " +
+                        "where brand = 'DELBONI' and specialty = ? and location = ? and day = ?",
+                slot, specialty, location, day);
+    }
 }
