@@ -3,6 +3,8 @@ version: '3.2'
 services:
   db-01:
     image: "cassandra"
+    ports:
+      - "9042:9042"
     networks:
       - cassandranet
     environment:
@@ -33,3 +35,4 @@ services:
       - /Users/carlosbrossa/workspace/poc-cassandra/Environment/nosql/db3:/var/lib/cassandra
 networks:
   cassandranet:
+    driver: bridge
