@@ -1,4 +1,4 @@
-package com.carlitos.cassandrapoc;
+package com.carlitos.cassandrapoc.service;
 
 import com.carlitos.cassandrapoc.model.LocationAvailable;
 import com.carlitos.cassandrapoc.model.LocationAvailablePK;
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.HashMap;
 
 @Service
-public class LocationService {
+public class LocationService{
 
     public LocationService(CassandraTemplate cassandraTemplate, CqlTemplate cqlTemplate) {
         this.cassandraTemplate = cassandraTemplate;
@@ -19,15 +19,12 @@ public class LocationService {
     private final CassandraTemplate cassandraTemplate;
     private final CqlTemplate cqlTemplate;
 
-    private static final String KEYSPACE = "airfare";
-    private static final String COLUMN_FAMILY = "location_by_specialty_brand";
-
     public void create() {
 
-        String[] locations = getLocations();
+        String[] locations = ScheduleUtil.getLocations();
         System.out.println("locations total = " + locations.length);
 
-        String[] specialties = getSpecialties();
+        String[] specialties = ScheduleUtil.getSpecialties();
         System.out.println("specialties total = " + specialties.length);
 
         for (String specialty : specialties){
@@ -43,45 +40,6 @@ public class LocationService {
         List<LocationAvailable> avaibilities = cassandraTemplate.select(QueryBuilder.selectFrom(KEYSPACE, COLUMN_FAMILY).all().build(),
                 LocationAvailable.class);
         System.out.println(avaibilities);*/
-    }
-
-    private static String[] getLocations() {
-        return new String[] {"DSE", "DVC", "DPP", "DSB", "DSU", "DGR", "DGV", "DPI", "DMO", "DS1", "DSN",
-                "DAU", "DBR", "DMA", "DUP", "DLB", "DIB", "DLP", "DS2", "DOS", "DSS", "DAP", "DTT", "DRJ", "DJS"};
-    }
-
-    private static String[] getSpecialties() {
-        return new String[] {
-                "AN-Testes Funcionais",
-                "ES-Densitometria / Mamogr",
-                "ES-Medicina Fetal",
-                "AN-COLETA",
-                "ES-Mapa",
-                "ES-Manometria",
-                "AN-Genetica",
-                "ES-Tomografia",
-                "ES-Endoscopia",
-                "ES-Ultra-Son. Doppler",
-                "ES-Densitometria / Mamografia",
-                "AN-Patologia",
-                "AN-Consultas",
-                "ES-Colonoscopia",
-                "ES-Teste Ergometrico",
-                "ES-Colposcopia",
-                "ES-Peniscopia",
-                "ES-Medicina Nuclear",
-                "ES-Raio X",
-                "ES-Ultra-Sonografia",
-                "ES-Mamografia",
-                "ES-Ressonancia",
-                "AN",
-                "AN-Mielograma",
-                "ES-Eletrocardiografia",
-                "ES-Densitometria Ossea",
-                "ES-Cardiologia - (Ecos)",
-                "ES-Holter 24h",
-                "ES-Vacinas"
-        };
     }
 
     public LocationAvailable getBySpeciality(String speciality) {

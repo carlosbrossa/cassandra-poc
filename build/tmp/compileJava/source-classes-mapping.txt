@@ -8,5 +8,15 @@ com/carlitos/cassandrapoc/model/LocationAvailable.java
  com.carlitos.cassandrapoc.model.LocationAvailable
 com/carlitos/cassandrapoc/controller/LocationController.java
  com.carlitos.cassandrapoc.controller.LocationController
-com/carlitos/cassandrapoc/LocationService.java
- com.carlitos.cassandrapoc.LocationService
+com/carlitos/cassandrapoc/service/LocationService.java
+ com.carlitos.cassandrapoc.service.LocationService
+com/carlitos/cassandrapoc/service/ScheduleUtil.java
+ com.carlitos.cassandrapoc.service.ScheduleUtil
+com/carlitos/cassandrapoc/model/ScheduleAvailableBySpecialityLocationDayPK.java
+ com.carlitos.cassandrapoc.model.ScheduleAvailableBySpecialityLocationDayPK
+com/carlitos/cassandrapoc/model/ScheduleAvailableBySpecialityLocationDay.java
+ com.carlitos.cassandrapoc.model.ScheduleAvailableBySpecialityLocationDay
+com/carlitos/cassandrapoc/service/ScheduleService.java
+ com.carlitos.cassandrapoc.service.ScheduleService
+com/carlitos/cassandrapoc/controller/ScheduleController.java
+ com.carlitos.cassandrapoc.controller.ScheduleController

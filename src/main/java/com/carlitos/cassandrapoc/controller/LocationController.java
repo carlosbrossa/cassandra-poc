@@ -1,6 +1,6 @@
 package com.carlitos.cassandrapoc.controller;
 
-import com.carlitos.cassandrapoc.LocationService;
+import com.carlitos.cassandrapoc.service.LocationService;
 import com.carlitos.cassandrapoc.model.LocationAvailable;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
